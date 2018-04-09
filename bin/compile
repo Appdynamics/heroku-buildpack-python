@@ -97,6 +97,10 @@ export LIBRARY_PATH=/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LIBRARY_PAT
 export LD_LIBRARY_PATH=/app/.heroku/vendor/lib:/app/.heroku/python/lib:$LD_LIBRARY_PATH
 export PKG_CONFIG_PATH=/app/.heroku/vendor/lib/pkg-config:/app/.heroku/python/lib/pkg-config:$PKG_CONFIG_PATH
 
+if [[ $VCAP_SERVICES == *appdynamics* ]]; then
+  source $BIN_DIR/steps/appdynamics-setup
+fi
+
 # Switch to the repo's context.
 cd "$BUILD_DIR"
 
